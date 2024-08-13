@@ -1,2 +1,2 @@
-# Calendar_bot
-Бот, собирающий задачи из Google Calendar и Todoist
+# Calendar bot
+Telegram-бот, собирающий задачи из Google Calendar и Todoist
