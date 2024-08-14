@@ -1,10 +1,12 @@
-import logging
 import asyncio
+import logging
 from datetime import datetime, time, timedelta
-from google_calendar import get_google_calendar_service
-from events_formatter import get_events
+
 from aiogram import Bot
-from config import AUTHORIZED_USER_IDS
+
+from bot.events_formatter import get_events
+from config.config import AUTHORIZED_USER_IDS
+from services.google_calendar import get_google_calendar_service
 
 
 async def send_daily_events(bot: Bot):
