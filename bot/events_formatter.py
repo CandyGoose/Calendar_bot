@@ -11,6 +11,9 @@ def format_events(events_by_date, days_of_week, today, tomorrow, day_after_tomor
     formatted_events = []
 
     for event_date, events in sorted(events_by_date.items()):
+        if event_date > day_after_tomorrow:
+            continue
+
         if event_date < today:
             date_label = "Дедлайн прошел ❌"
         elif event_date == today:
