@@ -1,9 +1,11 @@
 import asyncio
 import logging
+
 from aiogram import Bot, Dispatcher
-from scheduler import schedule_jobs
-from handlers import register_handlers
-from config import API_TOKEN
+
+from bot.handlers import register_handlers
+from bot.scheduler import schedule_jobs
+from config.config import API_TOKEN
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 

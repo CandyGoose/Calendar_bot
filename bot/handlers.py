@@ -1,10 +1,12 @@
 import logging
+
 from aiogram import Dispatcher, types
 from aiogram.enums import ParseMode
 from aiogram.filters import Command
-from google_calendar import get_google_calendar_service
-from events_formatter import get_events
-from config import AUTHORIZED_USER_IDS
+
+from bot.events_formatter import get_events
+from config.config import AUTHORIZED_USER_IDS
+from services.google_calendar import get_google_calendar_service
 
 
 async def start(message: types.Message):

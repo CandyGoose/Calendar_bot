@@ -1,7 +1,9 @@
 import datetime
+
 from dateutil import parser
 from todoist_api_python.api import TodoistAPI
-from config import LABEL_EMOJIS, TODOIST_TOKEN
+
+from config.config import LABEL_EMOJIS, TODOIST_TOKEN
 
 
 def get_todoist_tasks(all_days=False):
@@ -34,3 +36,7 @@ def get_todoist_tasks(all_days=False):
         formatted_tasks_by_date[date] = [task[0] for task in tasks]
 
     return formatted_tasks_by_date
+
+
+def fetch_todoist_tasks(all_days):
+    return get_todoist_tasks(all_days)
