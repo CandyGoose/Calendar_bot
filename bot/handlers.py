@@ -1,8 +1,7 @@
-import logging
-
 from aiogram import Dispatcher, types
 from aiogram.enums import ParseMode
 from aiogram.filters import Command
+import logging
 
 from bot.events_formatter import get_events
 from config.config import AUTHORIZED_USER_IDS
@@ -45,7 +44,22 @@ async def all_events(message: types.Message):
         await message.answer("Произошла ошибка при получении всех мероприятий.")
 
 
+async def today_events(message: types.Message):
+    logging.info(f"Received /today command from user {message.from_user.id}")
+    if message.from_user.id not in AUTHORIZED_USER_IDS:
+        logging.warning(f"Unauthorized access attempt by user {message.from_user.id}")
+        return
+    try:
+        service = get_google_calendar_service()
+        events = get_events(service, today_only=True)
+        await message.answer(events, parse_mode=ParseMode.HTML)
+    except Exception as e:
+        logging.error(f"Error fetching today's events: {e}")
+        await message.answer("Произошла ошибка при получении сегодняшних мероприятий.")
+
+
 def register_handlers(dp: Dispatcher):
     dp.message.register(start, Command("start"))
     dp.message.register(events, Command("events"))
     dp.message.register(all_events, Command("all_events"))
+    dp.message.register(today_events, Command("today"))
