@@ -7,7 +7,7 @@ from services.todoist import fetch_todoist_tasks
 
 
 def format_events(events_by_date, days_of_week, today, tomorrow, day_after_tomorrow):
-    separator = "\n" + 40 * "="
+    separator = "\n" + 35 * "="
     formatted_events = []
 
     for event_date, sources in sorted(events_by_date.items()):
