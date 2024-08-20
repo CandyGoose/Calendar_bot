@@ -1,4 +1,4 @@
-SCOPES = ['https://www.googleapis.com/auth/calendar.readonly', "https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+SCOPES = ['https://www.googleapis.com/auth/calendar.readonly', "https://www.googleapis.com/auth/spreadsheets"]
 
 API_TOKEN = 'API_TOKEN'
 TODOIST_TOKEN = 'TODOIST_TOKEN'
