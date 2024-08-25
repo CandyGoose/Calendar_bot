@@ -27,8 +27,15 @@ def format_events(events_by_date, days_of_week, today, tomorrow, day_after_tomor
         formatted_events.append(separator + "\n")
         formatted_events.append(f"<b>{date_label} {event_date.strftime('%d.%m')} ({day_of_week})</b>")
 
+        if event_date.weekday() == 0:
+            formatted_events.append("\n<b><i>----- Megabyte -----</i></b>")
+            formatted_events.append("💻 Vk")
+        elif event_date.weekday() == 4:
+            formatted_events.append("\n<b><i>----- Megabyte -----</i></b>")
+            formatted_events.append("💻 Vk/Tg")
+
         if sources.get('sheets'):
-            formatted_events.append("\n<b><i>----- Google Sheets -----</i></b>")
+            formatted_events.append("\n<b><i>----- IS -----</i></b>")
             formatted_events.extend(sources['sheets'])
 
         if sources.get('todoist'):

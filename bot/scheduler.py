@@ -14,8 +14,7 @@ async def send_morning_events(bot: Bot):
     try:
         service = get_google_calendar_service()
         events = get_events(service, today_only=True)
-        for chat_id in AUTHORIZED_USER_IDS:
-            await bot.send_message(chat_id, events, parse_mode="HTML")
+        await bot.send_message(AUTHORIZED_USER_IDS[0], events, parse_mode="HTML")
         logging.info("Morning events sent successfully")
     except Exception as e:
         logging.error(f"Error sending morning events: {e}")
@@ -25,9 +24,8 @@ async def send_evening_events(bot: Bot):
     logging.info("Sending evening events at 23:00")
     try:
         service = get_google_calendar_service()
-        events = get_events(service, all_days=True)
-        for chat_id in AUTHORIZED_USER_IDS:
-            await bot.send_message(chat_id, events, parse_mode="HTML")
+        events = get_events(service, all_days=False)
+        await bot.send_message(AUTHORIZED_USER_IDS[0], events, parse_mode="HTML")
         logging.info("Evening events sent successfully")
     except Exception as e:
         logging.error(f"Error sending evening events: {e}")
